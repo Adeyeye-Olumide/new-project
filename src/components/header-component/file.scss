@@ -1,0 +1,176 @@
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 500vh;
+    margin:0;
+    overflow-y: scroll;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    // background-image: url('../../utils/images/room.jpg');
+    height: 100vh;
+    width: 100vw;
+    padding: 0 60px 0 0;
+    opacity: 0.8;
+    transition: opacity 2s;
+    background-size: 100%;
+    // position: relative;
+    font-family: Archivo;
+   
+
+
+    .links-header {
+        padding: 0 20px 0 20px;
+        width: 45vw;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        opacity: 1;
+        position: relative;
+        z-index: 1;
+       
+       
+
+        .dropdown1 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+            
+           
+            
+            
+           
+            
+           
+
+            .dropdown-content {
+                display: none;
+
+                
+            }
+
+            .home-link{
+                height: 50px;
+            }
+    
+           
+            
+            .home-link:hover + .dropdown-content {
+                    display: block;
+            }
+            
+
+           
+    
+        }
+
+        
+       
+
+       
+        a {
+           
+            color: white;
+            text-decoration: none;
+            opacity: 1;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+       
+          
+        a {
+        position: relative;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        }
+        
+        a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -3px;
+        width: 100%;
+        height: 2px;
+        background-color: #fff;
+        transform-origin: center;
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+        }
+        
+        a:hover::after {
+        transform: scaleX(1);
+        transform-origin: center;
+        }
+        
+
+        .authentication-links-container {
+            display: flex;
+            flex-wrap: nowrap;
+            word-wrap: none;
+            overflow: hidden;
+            width: 100px;
+            height: inherit;
+
+
+            justify-content: space-between;
+
+            .signIn {
+                flex: 1;
+
+                .none:hover::after {
+                    transform: scaleX(0);
+                    transform-origin: center;
+                    }
+                
+            }
+
+           
+
+            .signOut{
+               position: relative;
+               
+            }
+
+
+            
+          
+    
+        }
+        
+    }
+
+   
+
+   
+
+    
+}
+
+.left {
+    transform: translateX(-500%);
+    transition: transform ease-in 2s;
+    
+   
+    display: none;
+}
+
+.right {
+    transform: translateX(500%);
+    transition: transform ease-in 2s;
+    display: none;
+}
+
+
+.fade-in {
+    opacity: 1;
+}

@@ -4,10 +4,29 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import { BrowserRouter } from 'react-router-dom';
+import { HeaderProvider } from './contexts/header-context';
+import { UserProvider } from './contexts/user-context';
+import { RoomProvider } from './contexts/room-context';
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+    <UserProvider>
+      <HeaderProvider>
+        <RoomProvider>
+          <App />
+        </RoomProvider>
+        
+         
+        
+        
+      </HeaderProvider>
+      </UserProvider>
+      
+    </BrowserRouter>
+    
   </React.StrictMode>
 );
 

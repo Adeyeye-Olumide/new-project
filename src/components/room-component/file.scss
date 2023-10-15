@@ -1,0 +1,26 @@
+
+.room-container {
+    margin-top: 50px;
+    padding: 0 20px 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    
+    .room-details {
+        display: flex;
+        gap: 20px;
+        height: 300px;
+        align-items: center;
+
+        div {
+            width: 300px;
+        }
+
+        button {
+            background-color: rgb(168, 155, 77);
+            width: 100px;
+            height: 40px
+        }
+        
+    }
+}

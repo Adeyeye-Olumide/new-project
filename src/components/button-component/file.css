@@ -1,0 +1,28 @@
+button{
+    flex: 1;
+    color: white;
+    outline: 0;
+    border: 0;
+    cursor: pointer;
+}
+
+.plain {
+    background-color: black;
+    
+}
+
+.plain:hover{
+    background-color: white;
+    border: 2px solid black;
+    color: black;
+
+}
+
+.google {
+    background-color:#1864ab;
+}
+
+.google:hover {
+    background-color: #228be6;
+}
+
