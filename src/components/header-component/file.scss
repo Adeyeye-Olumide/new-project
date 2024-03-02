@@ -6,67 +6,121 @@
 body {
     display: flex;
     flex-direction: column;
-    width: 100vw;
-    height: 500vh;
+    width: fit-content;
+    height: fit-content;
     margin:0;
     overflow-y: scroll;
+    overflow-x: hidden;
+    
+}
+
+main {
+
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(214, 208, 208);
+    height: fit-content;
+    overflow-x: hidden;
+    width: fit-content;
 }
 
 .header-container {
     display: flex;
     justify-content: space-between;
-    // background-image: url('../../utils/images/room.jpg');
-    height: 100vh;
-    width: 100vw;
-    padding: 0 60px 0 0;
-    opacity: 0.8;
-    transition: opacity 2s;
-    background-size: 100%;
+    // background-image: url('../../contexts/images/martian outdoor.jpg');
+    
+    
+    height: 70vh;
+    
+    padding: 20px 60px 0 0;
+    opacity: 0.6;
+    transition: opacity 0.5s ease-in;
+    background-size: cover;
     // position: relative;
     font-family: Archivo;
+    position: relative;
+    z-index: 3;
    
+    .logo {
+        display: flex;
+        justify-self: center;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        height: 100px;
+        // padding-top: 30px;
+        border-radius: 50%;
+        font-family: Luxurious Script;
+        background-color: antiquewhite;
+        width: 100px;
+        // font-size: 100px;
+        // background-color: black;
 
+    }
 
     .links-header {
-        padding: 0 20px 0 20px;
-        width: 45vw;
+        padding: 15px 20px 0 20px;
+        width: fit-content;
         display: flex;
-        justify-content: center;
-        gap: 20px;
-        opacity: 1;
-        position: relative;
-        z-index: 1;
-       
-       
+        flex-direction: column;
+        justify-self: center;
+        align-items: center;
+        // background-color: black;
+        height: 50px;
 
-        .dropdown1 {
+        h6 {
+            font-size: 70%;
+        }
+       
+       
+       
+        .sub-header {
+
             display: flex;
-            flex-direction: column;
+            justify-content: space-between;
+            gap: 20px;
+            opacity: 1;
+            position: relative;
+            z-index: 1;
+            // background-color: black;
+            width: 120%;
+            justify-self: center;
             align-items: center;
-            flex: 1;
-            
-           
-            
-            
-           
-            
+            // background-color: blue;
            
 
-            .dropdown-content {
-                display: none;
-
+            .dropdown1 {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                flex: 1;
                 
-            }
-
-            .home-link{
-                height: 50px;
-            }
+               
+                
+                
+               
+                
+               
     
-           
-            
-            .home-link:hover + .dropdown-content {
-                    display: block;
-            }
+                .dropdown-content {
+                    display: none;
+    
+                    
+                }
+    
+                .home-link{
+                    height: 50px;
+                    align-self: center;
+                    // background-color: blue;
+                    display: flex;
+                    align-items: center;
+                }
+        
+               
+               
+
+        }
+        
             
 
            
@@ -82,17 +136,14 @@ body {
             color: white;
             text-decoration: none;
             opacity: 1;
-            font-size: 18px;
+            // font-size: 1% !important;
             cursor: pointer;
+            position: relative;
+            transition: all 0.3s ease;
         }
 
        
-          
-        a {
-        position: relative;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        }
+        
         
         a::after {
         content: "";
@@ -117,7 +168,7 @@ body {
             display: flex;
             flex-wrap: nowrap;
             word-wrap: none;
-            overflow: hidden;
+            // overflow: hidden;
             width: 100px;
             height: inherit;
 
@@ -145,6 +196,45 @@ body {
             
           
     
+        }
+
+        .dropdowns {
+            display: flex;
+            gap: 20px;
+            color: wheat;
+            
+            
+            width: 50%;
+
+            div {
+                flex: 1;
+                background-color: transparent;
+                height: fit-content;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                box-shadow: 0px 10px 10px ;
+                border-bottom: 2px solid white;
+                visibility: hidden;
+
+                h6 {
+                    cursor: pointer;
+                }
+               
+              
+
+            }
+
+            .second {
+                display: flex;
+                // flex-direction: row;
+                
+                h6 {
+                    margin: 5px;
+                    border-bottom: 2px solid white;
+                }
+            }
+            
         }
         
     }
@@ -174,3 +264,50 @@ body {
 .fade-in {
     opacity: 1;
 }
+
+.blur {
+    filter: blur(10px);
+}
+
+// .visible {
+//     visibility: visible;
+// }
+
+
+
+@media screen and (max-width: 770px) {
+    .header-container {
+        display: flex;
+        justify-content: space-around;
+        padding-top: 15px;
+        margin: 0;
+        width: 100%;
+        
+        
+
+        .logo {
+            transform: translateX(-150%);
+            width: 80px;
+            height: 80px;
+
+            
+            h2{
+                font-size: 16px;
+            }
+           
+            margin: 0;
+        
+        }
+        .links-header {
+            width: fit-content;
+            margin-left: 60px;
+        
+
+        transform: translateX(-40%);
+
+         h6 {
+            font-size: 12px;
+        }
+     }
+    }
+ }

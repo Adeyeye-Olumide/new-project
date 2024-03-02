@@ -1,0 +1,45 @@
+
+
+.popup-container {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: fit-content;
+    background-color: white;
+    position: fixed !important;
+    justify-self: center;
+    align-self: center;
+    z-index: 4;
+    margin-top: 20px;
+    border-radius: 5px;
+    padding: 0 2px 0 2px;
+    transform: translateY(200%);
+    box-shadow: 0 0 6px;
+    font-family: Archivo;
+    // transform: translateY(200px);
+
+    .top {
+        display: flex;
+        justify-content: flex-end;
+        span {
+            font-size: 30px;
+            cursor: pointer;
+        }
+    }
+
+    .message {
+        justify-self: center;
+        text-align: left;
+        padding-left: 10px;
+        
+        h3 {
+            font-size: 24px;
+        }
+    }
+
+    
+}
+
+.hidePopUp {
+    display: none;
+}

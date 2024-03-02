@@ -3,24 +3,123 @@
     margin-top: 50px;
     padding: 0 20px 0 20px;
     display: flex;
-    flex-direction: column;
     gap: 50px;
-    
-    .room-details {
-        display: flex;
-        gap: 20px;
-        height: 300px;
-        align-items: center;
+    position: relative;
+    z-index: 0;
+    font-family: Archivo !important;
+    background-color: rgb(214, 208, 208);
+    overflow-y: hidden;
 
-        div {
-            width: 300px;
+    .room-options {
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+
+        .room-details {
+            display: flex;
+            gap: 2rem;
+            height: 50%;
+            align-items: center;
+            cursor: pointer;
+            font-size: 18px;
+
+            img {
+                border-radius: 6px;
+            }
+
+            h6 {
+                font-size: 14px;
+                margin: 15px;
+            }
+
+            .status {
+                width: fit-content;
+                padding: 5px;
+                font-size: 20px;
+                border-radius: 4px;
+                color: white;
+                box-shadow: 0 0 1px black;
+
+                
+
+            }
+
+            .available {
+                background-color: lightgreen;
+            }
+
+            .booked {
+                background-color: goldenrod;
+            }
+    
+            div {
+                width: 300px;
+            }
+    
+           
+            
         }
+    
+    }
+
+    .date-picker {
+        height: fit-content;
+        position: fixed;
+        display: flex;
+        flex-direction: column;
+        align-self: flex-start;
+        gap: 5px;
+        z-index: 2;
+        margin-right: 20px;
+        background-color: rgb(95, 93, 93);
+        width: 200px;
+        padding: 20px;
+        border-radius: 2px;
+        box-shadow: 2px 2px 180px 200px rgba(255, 255, 255, 0.555);
+        
+
+        transform: translateX(80vw) translateY(-110%);
 
         button {
-            background-color: rgb(168, 155, 77);
-            width: 100px;
-            height: 40px
+            font-size: 14px;
         }
-        
+
+        h5 {
+            color: white;
+        }
+
+
+        .input-date-picker {
+            border: none;
+            outline: none;
+            height: 20px;
+            
+
+        }
+
+        .input-night-numbers {
+            width: 180px;
+            height: 20px;
+            width: 100%;
+
+            
+        }
+
+        .plain {
+            height: 200px;
+            padding: 8px;
+        }
     }
+    
+    
+
+    
+}
+
+.hideDate {
+    display: none !important;
+}
+
+.fuzzy {
+    filter: blur(20px)
 }

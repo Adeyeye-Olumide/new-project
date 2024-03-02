@@ -1,66 +1,74 @@
-[
-    {
-        "id": 1,
-        "name":"Celestial Suite",
-        "imageUrl":"https://images.pexels.com/photos/2417842/pexels-photo-2417842.jpeg?cs=srgb&dl=pexels-roberto-nickson-2417842.jpg&fm=jpg&_gl=1*15bxh47*_ga*MzEwOTgwMjA5LjE2ODc5Njk0NDI.*_ga_8JE65Q40S6*MTY5NjY2NDY2OS4xNy4xLjE2OTY2NjUwMjkuMC4wLjA.",
-        "price": 4099,
-        "description": " Experience the pinnacle of luxury in our Celestial Suite. With its panoramic windows offering breathtaking views of distant galaxies, this suite is perfect for stargazers and dreamers. Enjoy spacious living, a private telescope, and 24/7 room service.",
-        "booked": false
+[   
+    {   "title": "reviews",
+        "data":[]
     },
 
-    {
-       
-        "id": 2,
-        "name":"Galaxy View Oasis",
-        "imageUrl":"https://images.pexels.com/photos/775219/pexels-photo-775219.jpeg?cs=srgb&dl=pexels-freemockupsorg-775219.jpg&fm=jpg&_gl=1*buhesx*_ga*MzEwOTgwMjA5LjE2ODc5Njk0NDI.*_ga_8JE65Q40S6*MTY5NjY2NDY2OS4xNy4xLjE2OTY2NjUyNDkuMC4wLjA.",
-        "price": 3099,
-        "description": "Find tranquility in our Galaxy View Oasis. This room boasts a large balcony where you can relax and gaze at the serene beauty of neighboring star systems. It's a peaceful escape from the hustle and bustle of everyday life.",
-        "booked": false
+    {   "title": "rooms",
+        "data": [
+            {
+                "id": 1,
+                "name":"Celestial Suite",
+                "imageUrl":"https://images.pexels.com/photos/2417842/pexels-photo-2417842.jpeg?cs=srgb&dl=pexels-roberto-nickson-2417842.jpg&fm=jpg&_gl=1*15bxh47*_ga*MzEwOTgwMjA5LjE2ODc5Njk0NDI.*_ga_8JE65Q40S6*MTY5NjY2NDY2OS4xNy4xLjE2OTY2NjUwMjkuMC4wLjA.",
+                "price": 4099,
+                "description": " Experience the pinnacle of luxury in our Celestial Suite. With its panoramic windows offering breathtaking views of distant galaxies, this suite is perfect for stargazers and dreamers. Enjoy spacious living, a private telescope, and 24/7 room service.",
+                "booked": false
+            },
 
-    },
+            {
+            
+                "id": 2,
+                "name":"Galaxy View Oasis",
+                "imageUrl":"https://images.pexels.com/photos/775219/pexels-photo-775219.jpeg?cs=srgb&dl=pexels-freemockupsorg-775219.jpg&fm=jpg&_gl=1*buhesx*_ga*MzEwOTgwMjA5LjE2ODc5Njk0NDI.*_ga_8JE65Q40S6*MTY5NjY2NDY2OS4xNy4xLjE2OTY2NjUyNDkuMC4wLjA.",
+                "price": 3099,
+                "description": "Find tranquility in our Galaxy View Oasis. This room boasts a large balcony where you can relax and gaze at the serene beauty of neighboring star systems. It's a peaceful escape from the hustle and bustle of everyday life.",
+                "booked": false
 
-    {
-       
-        "id": 3,
-        "name":"Nebula Retreat",
-        "imageUrl":"https://images.pexels.com/photos/2319428/pexels-photo-2319428.jpeg?cs=srgb&dl=pexels-abdel-rahman-abu-baker-2319428.jpg&fm=jpg&_gl=1*15bxh47*_ga*MzEwOTgwMjA5LjE2ODc5Njk0NDI.*_ga_8JE65Q40S6*MTY5NjY2NDY2OS4xNy4xLjE2OTY2NjUwMjkuMC4wLjA.",
-        "price": 3049,
-        "description": "Retreat to the Nebula Retreat for a cozy and intimate stay. This room's warm ambiance is accentuated by the soft glow of ambient lighting, making it ideal for couples seeking a romantic getaway.",
-        "booked": false
+            },
 
-    },
+            {
+            
+                "id": 3,
+                "name":"Nebula Retreat",
+                "imageUrl":"https://images.pexels.com/photos/2319428/pexels-photo-2319428.jpeg?cs=srgb&dl=pexels-abdel-rahman-abu-baker-2319428.jpg&fm=jpg&_gl=1*15bxh47*_ga*MzEwOTgwMjA5LjE2ODc5Njk0NDI.*_ga_8JE65Q40S6*MTY5NjY2NDY2OS4xNy4xLjE2OTY2NjUwMjkuMC4wLjA.",
+                "price": 3049,
+                "description": "Retreat to the Nebula Retreat for a cozy and intimate stay. This room's warm ambiance is accentuated by the soft glow of ambient lighting, making it ideal for couples seeking a romantic getaway.",
+                "booked": false
 
-    {
-       
-        "id": 4,
-        "name":"Starlight Serenity Chamber",
-        "imageUrl":"https://images.pexels.com/photos/6890413/pexels-photo-6890413.jpeg?cs=srgb&dl=pexels-max-rahubovskiy-6890413.jpg&fm=jpg&_gl=1*p2b7z8*_ga*MzEwOTgwMjA5LjE2ODc5Njk0NDI.*_ga_8JE65Q40S6*MTY5NjY2NDY2OS4xNy4xLjE2OTY2NjUyNDkuMC4wLjA.",
-        "price": 2099,
-        "description": "The Starlight Serenity Chamber is designed for those who seek peace and solitude. This room features blackout curtains, a plush reading nook, and a meditation space to help you unwind under the starlit canopy.",
-        "booked": false
+            },
 
-    },
+            {
+            
+                "id": 4,
+                "name":"Starlight Serenity Chamber",
+                "imageUrl":"https://images.pexels.com/photos/6890413/pexels-photo-6890413.jpeg?cs=srgb&dl=pexels-max-rahubovskiy-6890413.jpg&fm=jpg&_gl=1*p2b7z8*_ga*MzEwOTgwMjA5LjE2ODc5Njk0NDI.*_ga_8JE65Q40S6*MTY5NjY2NDY2OS4xNy4xLjE2OTY2NjUyNDkuMC4wLjA.",
+                "price": 2099,
+                "description": "The Starlight Serenity Chamber is designed for those who seek peace and solitude. This room features blackout curtains, a plush reading nook, and a meditation space to help you unwind under the starlit canopy.",
+                "booked": false
 
-    {
-       
-        "id": 5,
-        "name":"Solar Flare Hideaway",
-        "imageUrl":"https://images.pexels.com/photos/5923080/pexels-photo-5923080.jpeg?cs=srgb&dl=pexels-carlos-montelara-5923080.jpg&fm=jpg&_gl=1*1ut9np9*_ga*MzEwOTgwMjA5LjE2ODc5Njk0NDI.*_ga_8JE65Q40S6*MTY5NjY2NDY2OS4xNy4xLjE2OTY2NjUwMjkuMC4wLjA.",
-        "price": 2049,
-        "description": "Enjoy an energetic stay in our Solar Flare Hideaway. This vibrant room is inspired by the dynamic beauty of solar flares. It's perfect for guests who want to stay active, with its own mini gym and sun-simulating lighting.",
-        "booked": false
+            },
 
-    },
+            {
+            
+                "id": 5,
+                "name":"Solar Flare Hideaway",
+                "imageUrl":"https://images.pexels.com/photos/5923080/pexels-photo-5923080.jpeg?cs=srgb&dl=pexels-carlos-montelara-5923080.jpg&fm=jpg&_gl=1*1ut9np9*_ga*MzEwOTgwMjA5LjE2ODc5Njk0NDI.*_ga_8JE65Q40S6*MTY5NjY2NDY2OS4xNy4xLjE2OTY2NjUwMjkuMC4wLjA.",
+                "price": 2049,
+                "description": "Enjoy an energetic stay in our Solar Flare Hideaway. This vibrant room is inspired by the dynamic beauty of solar flares. It's perfect for guests who want to stay active, with its own mini gym and sun-simulating lighting.",
+                "booked": false
 
-    {
-       
-        "id": 6,
-        "name":"Moonlit Observatory Suite",
-        "imageUrl":"https://www.marrakeshresortandspa.com/images/suites/celestial-suite-1.jpg",
-        "price": 1099,
-        "description": "The Moonlit Observatory Suite offers a unique perspective on space. This room comes with a private observatory dome, complete with a high-powered telescope. Observe celestial wonders right from your bedroom.",
-        "booked": false
+            },
 
+            {
+            
+                "id": 6,
+                "name":"Moonlit Observatory Suite",
+                "imageUrl":"https://www.marrakeshresortandspa.com/images/suites/celestial-suite-1.jpg",
+                "price": 1099,
+                "description": "The Moonlit Observatory Suite offers a unique perspective on space. This room comes with a private observatory dome, complete with a high-powered telescope. Observe celestial wonders right from your bedroom.",
+                "booked": false
+
+            }
+        ]
     }
 
 

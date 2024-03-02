@@ -1,29 +1,35 @@
 
 import SignIn from '../form component/sign-in form'
 import SignUp from '../form component/sign-up form'
-import { useState, useContext } from 'react'
+
+import { useNavigate } from 'react-router-dom'
+
 
 import { signInWithGooglePopUp,  
     createUserDoc, 
     genericSignIn, genericSignUp} from '../../utils/firestore'
 
-   
+
+let formData, form, formElement
+
 
 function Authentication(){
-    let formData, form, formElement
+    const navigate = useNavigate()
+    
   
 
    
     async function googleSignIn (){
         try {
             const {user} = await signInWithGooglePopUp()
-            console.log(user)
+           
             
             
             createUserDoc(user)
            
-
-            formElement.reset()
+            
+            formElement?.reset()
+            navigate('/resort')
 
             
             
@@ -39,11 +45,13 @@ function Authentication(){
         try {
            const {email, password} = formData
            const {user} = await genericSignIn(email, password)
-           console.log(user)
+           
           
            createUserDoc(user)
 
-           formElement.reset()
+           formElement?.reset()
+
+           navigate('/resort')
            
           
         } 
@@ -63,9 +71,12 @@ function Authentication(){
             } 
             const {user} = await genericSignUp(email, password)
             createUserDoc(user,{ displayName })
+
+
             
 
-            formElement.reset()
+            formElement?.reset()
+            navigate('/resort')
             
             
             
@@ -85,12 +96,11 @@ function Authentication(){
         
         formData = Object.fromEntries(form)
 
-        console.log(formData)
     }
 
 
     return (
-        <div className="form-container">
+        <div className="form-container component">
             <SignIn onChange={handler} onSubmit={signIn} onClick={googleSignIn}></SignIn>
 
             <SignUp onSubmit = {onSubmit} onChange = {handler}></SignUp>

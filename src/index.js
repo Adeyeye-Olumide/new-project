@@ -9,20 +9,46 @@ import { HeaderProvider } from './contexts/header-context';
 import { UserProvider } from './contexts/user-context';
 import { RoomProvider } from './contexts/room-context';
 
+import { BookingsProvider } from './contexts/bookings-context';
+
+import { Elements } from  '@stripe/react-stripe-js'
+
+import { returnStripe } from './utils/stripe';
+import { ReviewsProvider } from './contexts/reviews-context';
+
+import {AsyncHashLinkObserver} from 'react-hash-link'
+
+
+
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
     <UserProvider>
+      {/* <AsyncHashLinkObserver> */}
+
       <HeaderProvider>
         <RoomProvider>
-          <App />
+          <BookingsProvider>
+            <ReviewsProvider>
+             
+                <App />
+              
+            </ReviewsProvider>
+            
+           
+          </BookingsProvider>
+         
         </RoomProvider>
         
          
         
         
       </HeaderProvider>
+        
+      {/* </AsyncHashLinkObserver> */}
+     
       </UserProvider>
       
     </BrowserRouter>

@@ -1,17 +1,17 @@
 import { useContext, useEffect } from 'react'
 import { UserContext } from '../../contexts/user-context'
 import SideBarChild from '../side-bar-child-component/side-bar-child'
-import Spinner from '../spinner-component/spinner-component'
+
 import './file.scss'
 
 function SideBar(){
-    const {currentUser, isLoaded} = useContext(UserContext)
+    const {currentUser, } = useContext(UserContext)
 
 
     useEffect(()=> {
         const element = document.querySelector('.header-container')
     
-        const dropDownContent = element.querySelector(".dropdown-content")
+        const myAccount = element.querySelector(".account")
 
         const sideBar = element.querySelector('.side-bar-container')
 
@@ -19,12 +19,24 @@ function SideBar(){
             sideBar?.classList.toggle('active')
         }
 
+        const windowHandler = (e) => {
+            if (e.target.classList.contains('account') || e.target.closest('.side-bar-container')) return 
+            sideBar.classList.remove('active')
+           
+        }
+
 
       
 
-        dropDownContent.addEventListener("click", revealSideBar)
+        myAccount.addEventListener("click", revealSideBar)
+        window.addEventListener("click", windowHandler)
 
-        return ()=> dropDownContent.removeEventListener("click", revealSideBar)
+        return ()=> {
+            
+            myAccount.removeEventListener("click", revealSideBar)
+            window.removeEventListener("click", windowHandler)
+    
+        }
             
         
         
@@ -35,8 +47,8 @@ function SideBar(){
     return (
         
         
-        <div className='side-bar-container'>
-                {!isLoaded? <Spinner></Spinner>: <SideBarChild></SideBarChild>}
+        <div className='side-bar-container component'>
+            <SideBarChild></SideBarChild>
             
         </div>
         

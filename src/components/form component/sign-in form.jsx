@@ -12,12 +12,12 @@ function SignIn(props){
                 </div>
                 <div className='other'>
                     <div>
-                        <input  type="email" name="email" id="email" required/>
+                        <input  type="email" name="email" id="email1" required/>
                         <label htmlFor="email">Email</label>
                     </div>
                     <div>
                         
-                        <input type="password" name="password" id="password"  required/>
+                        <input type="password" name="password" id="password1"  required/>
                         <label htmlFor="password">Password</label>
 
                     </div>

@@ -1,15 +1,23 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
+/.gitignore
+/.package.json
+/.package-lock.json
 /node_modules
 /.pnp
 .pnp.js
+/.firebase
+/.firebaserc
+
 
 # testing
 /coverage
 
 # production
 /build
+
+.env
 
 # misc
 .DS_Store

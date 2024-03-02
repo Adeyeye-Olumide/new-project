@@ -14,7 +14,21 @@ import {GoogleAuthProvider,
     signOut
 } from 'firebase/auth'
 
-import {getFirestore, doc, getDoc, setDoc} from 'firebase/firestore'
+import {
+  getFirestore, 
+  doc, 
+  getDoc, 
+  setDoc,
+  collection,
+  writeBatch,
+  query,
+  getDocs, 
+  updateDoc, 
+  arrayUnion,
+  onSnapshot
+} from 'firebase/firestore'
+import { useContext } from "react";
+import { HeaderContext } from "../contexts/header-context";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -33,6 +47,8 @@ const app = initializeApp(firebaseConfig);
 
 const auth = getAuth()
 
+
+
 const provider = new GoogleAuthProvider()
 
 provider.setCustomParameters({
@@ -43,39 +59,171 @@ export const signInWithGooglePopUp = ()=> signInWithPopup(auth, provider)
 
 const db = getFirestore(app)
 
+
+
+
+
+
+export const addCollectionAndDocs = async(collectionKey, objectsData) => {
+  const collectionRef = collection(db, collectionKey)
+  const batch = writeBatch(db)
+
+  objectsData.forEach(object => {
+
+    const docRef = doc(collectionRef, object.title.toLowerCase())
+    batch.set(docRef, object)
+  })
+
+  await batch.commit()
+  console.log('done')
+}
+
+
+export const getDataFromDb = async (string='rooms') => {
+
+  try {
+
+    const collectionRef = collection(db, string)
+
+
+    const q = query(collectionRef)
+
+    
+
+    const querySnapShot = await getDocs(q)
+
+    
+
+    const roomsItems = querySnapShot.docs.reduce((acc, docSnapShot)=> {
+      const {title, data} = docSnapShot.data()
+
+      acc[title.toLowerCase()] = data
+
+      return acc
+    }, {})
+
+    if(!roomsItems.rooms) throw new Error("no network")
+
+   
+
+
+
+  return roomsItems
+    
+  } 
+  catch (error) {
+
+    return error
+
+    
+  }
+  
+}
+
 export const createUserDoc = async(userID, added ={}) => {
   const userDoc = doc(db, 'users', userID.uid)
+  
 
 
-  const userSnapShot = await getDoc(userDoc)
+  try {
 
-  if (!userSnapShot.exists()){
+    const userSnapShot = await getDoc(userDoc)
+
+  
+
+    if (!userSnapShot.exists()){
     const { displayName, email} = userID
 
     const createdAt = new Date()
 
+    const result = await setDoc(userDoc, {
+      displayName,
+      email,
+      createdAt,
+      bookings:[],
+      ...added
+    })
 
-    try {
-      await setDoc(userDoc, {
-        displayName,
-        email,
-        createdAt,
-        bookings:[],
-        ...added
-      })
 
-      alert('Sign up successful')
-    } 
+
     
-    catch (error) {
-      throw new Error(error)
-    }
 
+    alert('Sign up successful')
+
+
+
+    }
+  }
+  
+
+  
+  catch (error) {
+
+   
+
+  
+
+    
+
+    
+  }
+
+  return userDoc
+
+
+  
+}
+
+export const update = async (data, string = 'rooms')=>{
+
+  const collectionRef = doc(db, 'rooms', string)
+  console.log(collectionRef)
+
+  if(string == 'rooms'){
+    await updateDoc(collectionRef, {data})
+
+    return console.log("done")
 
   }
 
+  else {
+    await updateDoc(collectionRef, {
+      data: arrayUnion(data)
+    })
 
-  return userDoc
+    return 
+ }
+
+ 
+ 
+
+}
+
+export const reviewsListener = (setDatafunc)=> {
+
+
+  try {
+
+    const unsub = onSnapshot(doc(db, 'rooms', 'reviews'),
+    {includeMetadataChanges: true},
+
+    (reviewsDoc)=> {
+      setDatafunc(reviewsDoc.data()?.data)
+      
+    }
+  
+  )
+
+  return unsub
+    
+  } 
+  catch (error) {
+
+    // throw new Error(error)
+    
+  }
+  
+
 }
 
 export async function genericSignIn(email, password){
@@ -98,4 +246,7 @@ export function authStateListener(callback){
 export function signUserOut(){
   return signOut(auth)
 }
+
+
+
 

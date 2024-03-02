@@ -7,12 +7,27 @@ button{
 }
 
 .plain {
-    background-color: black;
+    
+    background-color: rgb(168, 155, 77);
+    width: 100px;
+    height: 40px
     
 }
 
+.inverted {
+    background-color: gray;
+}
+
+.disabled {
+    background-color: rgba(231, 219, 219, 0.397);
+    color: black;
+    cursor: default;
+    width: 100px;
+    height: 40px
+}
+
 .plain:hover{
-    background-color: white;
+    background-color: rgb(104, 96, 51);
     border: 2px solid black;
     color: black;
 
@@ -24,5 +39,9 @@ button{
 
 .google:hover {
     background-color: #228be6;
+}
+
+.payment {
+    background-color: #7dc855;
 }
 

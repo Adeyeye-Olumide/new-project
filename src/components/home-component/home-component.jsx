@@ -7,10 +7,10 @@ function HomeComponent(){
 
     return (
         <>
-        <section className="home1">
+        <section className="home1 component">
             <div className="introduction">
                 <div className="introduction-text">
-                    <h2>Welcome to Resplendent</h2>
+                    <h2>Welcome to Space Hospitality</h2>
                     <h1>Curating Memorable Journeys</h1>
                     <h3>In Outer Space</h3>
 
@@ -38,7 +38,7 @@ function HomeComponent(){
                 
             </div>
         </section>
-        <section className='home2'>
+        <section className='home2 component'>
             <div className='image'>
 
             </div>
