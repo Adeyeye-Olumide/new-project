@@ -24,7 +24,7 @@ function RoomComponent(){
     
     
 
-    const {rooms, setId} = useContext(RoomContext)
+    const {rooms, setId, id} = useContext(RoomContext)
     const {setAmount, selectedDate, setSelectedDate, setNightNumber} = useContext(BookingsContext)
     const {setMessage} = useContext(HeaderContext)
     const {currentUser} = useContext(UserContext)
@@ -32,6 +32,9 @@ function RoomComponent(){
     const todaysDate = new Date()
     
     const navigate = useNavigate()
+
+
+    console.log(rooms, id)
 
 
    
@@ -89,7 +92,7 @@ function RoomComponent(){
 
     function roomChooser(e){
 
-
+        // return console.log(rooms)
         if(!e.target.closest('.room-details') 
         ) return
 
@@ -115,6 +118,7 @@ function RoomComponent(){
         const name = e.target.closest('.room-details').querySelector('h1').textContent
 
         setId(id)
+
         
 
         setMessage(`You are intending to book ${name}?

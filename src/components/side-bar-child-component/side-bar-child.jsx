@@ -33,7 +33,8 @@ function SideBarChild(){
         function toggler(){
             
             reviews.classList.toggle('open')
-            setOpen(!open)
+            setOpen()
+            console.log(open)
            
             
         
@@ -82,7 +83,7 @@ function SideBarChild(){
 
         })
 
-    }, [currentUser])
+    }, [open])
 
     
 

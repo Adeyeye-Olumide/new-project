@@ -1,5 +1,5 @@
 
-import { useState, useContext } from "react";
+import { useState, useContext, useReducer } from "react";
 import { useEffect } from "react";
 import { createContext } from "react";
 
@@ -11,9 +11,22 @@ export const ReviewsContext = createContext({
     setReviews: ()=> null
 })
 
+const reviewsReducer = (state, action)=> {
+    
+    const {type, payload} = action
+   
+    return payload
+
+}
+
 export const ReviewsProvider = ({children})=> {
-    const [reviews, setReviews] = useState(null)
+    const [reviews, dispatch] = useReducer(reviewsReducer, [])
+
+    // const [reviews, setReviews] = useState([])
     const {setMessage} = useContext(HeaderContext)
+    const setReviews = (data)=> dispatch({payload:data})
+
+    
 
 
     function setReviewsInListener(data){
