@@ -10,13 +10,14 @@ import { UserProvider } from './contexts/user-context';
 import { RoomProvider } from './contexts/room-context';
 
 import { BookingsProvider } from './contexts/bookings-context';
+import { Provider } from 'react-redux'
 
 import { Elements } from  '@stripe/react-stripe-js'
 
 import { returnStripe } from './utils/stripe';
 import { ReviewsProvider } from './contexts/reviews-context';
 
-import {AsyncHashLinkObserver} from 'react-hash-link'
+import { store } from './store/redux-store';
 
 
 
@@ -24,34 +25,39 @@ import {AsyncHashLinkObserver} from 'react-hash-link'
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+   
+    <Provider store={store}>
     <BrowserRouter>
-    <UserProvider>
+    {/* <UserProvider> */}
       {/* <AsyncHashLinkObserver> */}
 
-      <HeaderProvider>
-        <RoomProvider>
-          <BookingsProvider>
-            <ReviewsProvider>
+      {/* {<HeaderProvider>} */}
+        {/* <RoomProvider> */}
+          {/* <BookingsProvider> */}
+            {/* <ReviewsProvider> */}
              
                 <App />
               
-            </ReviewsProvider>
+            {/* </ReviewsProvider> */}
             
            
-          </BookingsProvider>
+          {/* </BookingsProvider> */}
          
-        </RoomProvider>
+        {/* </RoomProvider> */}
         
          
         
         
-      </HeaderProvider>
+      {/* </HeaderProvider> */}
         
       {/* </AsyncHashLinkObserver> */}
      
-      </UserProvider>
+      {/* </UserProvider> */}
+      </BrowserRouter>
+    </Provider>
+    
       
-    </BrowserRouter>
+    
     
   </React.StrictMode>
 );

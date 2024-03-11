@@ -1,11 +1,12 @@
 import { useContext, useEffect } from 'react'
 import { UserContext } from '../../contexts/user-context'
 import SideBarChild from '../side-bar-child-component/side-bar-child'
+import { useSelector } from "react-redux"
 
 import './file.scss'
 
 function SideBar(){
-    const {currentUser, } = useContext(UserContext)
+    const currentUser = useSelector((state)=> state.currentUser)
 
 
     useEffect(()=> {

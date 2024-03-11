@@ -20,12 +20,17 @@ import CheckOutComponent from "../checkout-component/checkout-component";
 
 import { returnStripe } from "../../utils/stripe";
 
-function PaymentForm(){
+import { setMessage } from "../../store/header-reducer";
+import { useDispatch, useSelector} from "react-redux";
 
-    const {amount, } = useContext(BookingsContext)
+function PaymentForm(){
+    const dispatch = useDispatch()
+    const {amount, } = useSelector((state)=> state.bookings)
     
    
-    const {setMessage} = useContext(HeaderContext)
+    // const {setMessage} = useContext(HeaderContext)
+
+
 
     const [clientSecret, setClientSecret] = useState(null)
     const [stripe, setStripe] = useState(null)
@@ -55,7 +60,7 @@ function PaymentForm(){
 
     useEffect(()=> {
         if(!amount) {
-            setMessage("You have not booked a room yet, you are being redirected")
+            dispatch(setMessage("You have not booked a room yet, you are being redirected"))
             return navigate('/gallery')
         
         }

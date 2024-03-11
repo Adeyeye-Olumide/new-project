@@ -5,13 +5,18 @@ import ButtonComponent from "../button-component/button-component"
 import { update } from "../../utils/firestore"
 import './file.scss'
 import { UserContext } from "../../contexts/user-context"
+import { useSelector } from "react-redux"
+
+import ReviewsFunc from "../../store/reviews-func"
 
 
 
 function ReviewsComponent(){
 
-    const {reviews} = useContext(ReviewsContext)
-    const {currentUser} = useContext(UserContext)
+    ReviewsFunc()
+
+    const reviews = useSelector((state)=> state.reviews)
+    const currentUser = useSelector((state)=> state.currentUser)
    
     let textElementContent, textElement
 
@@ -51,7 +56,7 @@ function ReviewsComponent(){
         <div className="reviews-component-container component">
             <h2> Reviews From Our Esteemed Customers</h2>
             {
-               reviews && reviews.map(({review, date, name})=> {
+               reviews && reviews?.map(({review, date, name})=> {
                 console.log(date.toDate().toDateString())
                 return (
                     <div key={date} className = 'reviews-content'>

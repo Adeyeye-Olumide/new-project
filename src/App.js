@@ -11,8 +11,33 @@ import PaymentForm from './components/payment-form-component/payment-form-compon
 import ReviewsComponent from './components/reviews-component/reviews-component';
 import TransactionSuccessPage from './components/transaction-success-page/transaction-success-page';
 import GalleryComponent from './components/gallery-component/gallery-component';
+import { useEffect } from 'react';
+import { createUserDoc, authStateListener } from './utils/firestore';
+
+import { setCurrentUser } from './store/user-reducer';
+
+import { useDispatch } from 'react-redux'
 
 function App() {
+
+  const dispatch = useDispatch()
+  useEffect(()=> {
+
+    const unsubscribe = authStateListener(user => {
+            
+      if(user) createUserDoc(user)
+      
+      dispatch(setCurrentUser(user))
+    })
+
+    return unsubscribe
+  
+
+
+  }, [])
+
+
+
   return (
     <Routes>
       

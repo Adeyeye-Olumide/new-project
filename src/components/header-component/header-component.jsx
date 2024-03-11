@@ -16,13 +16,20 @@ import PopUp from "../pop-up-component/pop-up-component"
 import { UserContext } from "../../contexts/user-context"
 import FooterComponent from "../footer-component/footer-component"
 
+import { useSelector } from "react-redux"
+
+import HeaderFunc from "../../store/header-function"
+import RoomsFunc from "../../store/rooms-func"
+
 
 
 
 function Header(){
 
-    const  {menuHandler} = useContext(HeaderContext)
-    const {currentUser} = useContext(UserContext)
+    const  menuHandler = HeaderFunc()
+    const currentUser = useSelector((state)=> state.currentUser)
+
+    RoomsFunc()
    
 
     

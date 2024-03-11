@@ -23,17 +23,24 @@ import Spinner from "../spinner-component/spinner-component";
 
 import addDays from "date-fns/esm/fp/addDays/index.js";
 
+import { useSelector, useDispatch } from "react-redux";
+
+import { setMessage } from "../../store/header-reducer";
+
+import { setRoomData } from "../../store/rooms-reducer";
+
 function CheckOutComponent(prop) {
 
+    const dispatch = useDispatch()
     const stripe = useStripe()
     const elements = useElements()
 
-    const {selectedDate, nightNumber, amount,} = useContext(BookingsContext)
-    const {currentUser} = useContext(UserContext)
-    const {id, rooms, setRoomData,} = useContext(RoomContext)
+    const {selectedDate, nightNumber, amount,} = useSelector((state)=> state.bookings)
+    const currentUser = useSelector((state)=> state.currentUser)
+    const {id, rooms, } = useSelector((state)=> state.rooms)
 
     
-    const {setMessage} = useContext(HeaderContext)
+    // const {setMessage} = useContext(HeaderContext)
 
     const [isProcessing, setIsProcessing] = useState(false)
 
@@ -82,7 +89,7 @@ function CheckOutComponent(prop) {
 
 
             setIsProcessing(true)
-            setMessage('Payment is being processed, Do not refresh the page')
+            dispatch(setMessage('Payment is being processed, Do not refresh the page'))
 
     
     
@@ -93,10 +100,10 @@ function CheckOutComponent(prop) {
                 const updatedRoom = rooms.map(room=> room.id == id? {...room, booked:true}: room)
                 const filtered = updatedRoom.filter(room=>room.booked == true && room.id == id)[0]
 
-                setMessage(`Payment Successful, You have booked ${filtered.name}`)
+                dispatch(setMessage(`Payment Successful, You have booked ${filtered.name}`))
             
 
-                setRoomData(updatedRoom)
+                dispatch(setRoomData(updatedRoom))
                 
                 update(updatedRoom, 'rooms')
                 
@@ -124,7 +131,7 @@ function CheckOutComponent(prop) {
 
 
 
-                navigate('/')
+                navigate('/resort')
 
 
 
@@ -173,8 +180,8 @@ function CheckOutComponent(prop) {
                 {
                     isProcessing? <Spinner></Spinner>:
                     <div>
-                        <div class="form-header">
-                            <h4 class="title">Credit card detail</h4>
+                        <div className="form-header">
+                            <h4 className="title">Credit card detail</h4>
                         </div>
                         <PaymentElement></PaymentElement>
                         <ButtonComponent text='PAY NOW' buttonType ='payment' disabled={isProcessing}></ButtonComponent>

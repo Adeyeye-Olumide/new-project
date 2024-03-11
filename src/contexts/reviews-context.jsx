@@ -5,6 +5,8 @@ import { createContext } from "react";
 
 import { reviewsListener } from "../utils/firestore";
 import { HeaderContext } from "./header-context";
+import { setMessage } from "../store/header-reducer";
+import { useDispatch } from "react-redux";
 
 export const ReviewsContext = createContext({
     reviews: [],
@@ -20,10 +22,11 @@ const reviewsReducer = (state, action)=> {
 }
 
 export const ReviewsProvider = ({children})=> {
+    const dispatcher = useDispatch()
     const [reviews, dispatch] = useReducer(reviewsReducer, [])
 
     // const [reviews, setReviews] = useState([])
-    const {setMessage} = useContext(HeaderContext)
+    // const {setMessage} = useContext(HeaderContext)
     const setReviews = (data)=> dispatch({payload:data})
 
     
@@ -47,7 +50,7 @@ export const ReviewsProvider = ({children})=> {
         } 
         
         catch (error) {
-            setMessage('Network Problems Detected, Kindly Check Your Network and Reload The Page')
+            dispatcher(setMessage('Network Problems Detected, Kindly Check Your Network and Reload The Page'))
             
         }
 

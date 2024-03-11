@@ -16,18 +16,27 @@ import { HeaderContext } from "../../contexts/header-context"
 
 
 import Spinner from '../spinner-component/spinner-component'
+import { setMessage } from "../../store/header-reducer"
+
+import { useSelector, useDispatch } from "react-redux"
+import { setAmount, setNightNumber, setSelectedDate} from '../../store/bookings-reducer'
+
+
+
+import { setId } from '../../store/rooms-reducer'
 
 
 let datePickerEl, nightNumber, amount
 function RoomComponent(){
 
     
-    
+    const dispatch = useDispatch()
 
-    const {rooms, setId, id} = useContext(RoomContext)
-    const {setAmount, selectedDate, setSelectedDate, setNightNumber} = useContext(BookingsContext)
-    const {setMessage} = useContext(HeaderContext)
-    const {currentUser} = useContext(UserContext)
+    const {rooms, id} = useSelector((state)=> state.rooms)
+    const { selectedDate} = useSelector((state)=> state.bookings)
+    // const {setMessage} = useContext(HeaderContext)
+    const currentUser = useSelector((state)=> state.currentUser)
+   
 
     const todaysDate = new Date()
     
@@ -84,7 +93,7 @@ function RoomComponent(){
 
     function returnNightNumber(){
         const n = (!nightNumber? nightNumber=1: nightNumber)
-        setNightNumber(n)
+        dispatch(setNightNumber(n))
 
         return n
     }
@@ -107,7 +116,7 @@ function RoomComponent(){
         if(available == 'booked'){
             datePickerEl.classList.add("hideDate")
 
-            return setMessage("This Room has been booked, kindly check other rooms")
+            return dispatch(setMessage("This Room has been booked, kindly check other rooms"))
         }
         
         const id = e.target.closest('.room-details').id
@@ -117,12 +126,12 @@ function RoomComponent(){
        
         const name = e.target.closest('.room-details').querySelector('h1').textContent
 
-        setId(id)
+        dispatch(setId(id))
 
         
 
-        setMessage(`You are intending to book ${name}?
-        If Yes close this box and pick a date on the right`)
+        dispatch(setMessage(`You are intending to book ${name}?
+        If Yes close this box and pick a date on the right`))
 
         // runOnSelectedScreenSize()
 
@@ -139,12 +148,12 @@ function RoomComponent(){
         if (e.target.className.split(" ")[1] == 'plain') {
 
             if(!currentUser) {
-                setMessage("You Have To Create an Account, or Log In")
+                dispatch(setMessage("You Have To Create an Account, or Log In"))
                 return navigate("/authentication")
             
             }
 
-            setAmount(amount* returnNightNumber())
+           dispatch(setAmount(amount* returnNightNumber()))
 
             
 
@@ -206,8 +215,8 @@ function RoomComponent(){
                 </input>
                 <DatePicker className="input-date-picker" selected={selectedDate} onChange={
                     (date)=> {date < todaysDate || date == todaysDate?
-                        setMessage("You Cannot Book On past Dates or today"):
-                        setSelectedDate(date)}} dateFormat="MMMM d, yyyy">
+                        dispatch(setMessage("You Cannot Book On past Dates or today")):
+                        dispatch(setSelectedDate(date))}} dateFormat="MMMM d, yyyy">
 
                 </DatePicker>
                 <ButtonComponent text={"BOOK NOW"} buttonType={"plain"}></ButtonComponent>

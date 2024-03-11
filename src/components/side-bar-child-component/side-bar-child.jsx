@@ -8,15 +8,21 @@ import { RoomContext } from '../../contexts/room-context'
 
 import { UserContext } from '../../contexts/user-context'
 
+import { useSelector, useDispatch } from "react-redux"
+
+import { setOpen } from '../../store/bookings-reducer'
+
 
 import './file.scss'
 
 
 function SideBarChild(){
 
-    const {currentUser} = useContext(UserContext)
-    const {open, setOpen} = useContext(BookingsContext)
-    const {roomObj} = useContext(RoomContext)
+    const dispatch = useDispatch()
+
+    const currentUser = useSelector((state)=> state.currentUser)
+    const {open,} = useSelector((state)=> state.bookings)
+    const {roomsObj} = useSelector((state)=> state.rooms)
  
 
     
@@ -33,7 +39,7 @@ function SideBarChild(){
         function toggler(){
             
             reviews.classList.toggle('open')
-            setOpen()
+            dispatch(setOpen())
             console.log(open)
            
             
@@ -47,6 +53,7 @@ function SideBarChild(){
 
         toggleArrow.addEventListener('click', toggler)
         
+        console.log(roomsObj)
         
         
 
@@ -130,7 +137,7 @@ function SideBarChild(){
                     
 
                     
-                    {roomObj && roomObj.bookings?.map((item, index) => {
+                    {roomsObj && roomsObj.bookings?.map((item, index) => {
 
                         if(item.name != displayName) return
 

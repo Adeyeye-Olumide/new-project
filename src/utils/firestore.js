@@ -28,7 +28,7 @@ import {
   onSnapshot
 } from 'firebase/firestore'
 import { useContext } from "react";
-import { HeaderContext } from "../contexts/header-context";
+import { ontext } from "../contexts/header-context";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 

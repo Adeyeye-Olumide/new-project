@@ -1,11 +1,14 @@
 
 import { useContext } from 'react'
+import { useSelector } from 'react-redux'
 import { HeaderContext } from '../../contexts/header-context'
 import './file.scss'
 
 function PopUp(){
 
-    const {message} = useContext(HeaderContext)
+    const message = useSelector((state)=> state.header.message)
+
+    // const {message} = useContext(HeaderContext)
 
 
     return (

@@ -15,8 +15,14 @@ export const BookingsContext = createContext({
     nightNumber: null,
     setNightNumber: ()=> null
 })
-
-const bookingsReducer = (state, action)=> {
+const initialstate = {
+    bookings: [],
+    amount: null,
+    selectedDate: null,
+    open: false,
+    nightNumber: null
+}
+const bookingsReducer = (state , action)=> {
     const {type, payload} = action
 
     switch (type) {
@@ -61,13 +67,7 @@ const bookingsReducer = (state, action)=> {
     }
 }
 
-const initialstate = {
-    bookings: [],
-    amount: null,
-    selectedDate: null,
-    open: false,
-    nightNumber: null
-}
+
 
 export const BookingsProvider = ({children})=>{
     // const [bookings, setBooking] = useState([])
@@ -80,9 +80,9 @@ export const BookingsProvider = ({children})=>{
 
     const setSelectedDate = (date)=> dispatch({type: 'setSelectedDate', payload: date})
     const setAmount = (amount)=> dispatch({type: 'setAmount', payload: amount})
-    const setBooking = (booking)=> dispatch({type: 'setSelectedDate', payload: booking})
+    const setBooking = (booking)=> dispatch({type: 'setBooking', payload: booking})
     const setOpen = ()=> dispatch({type: 'setOpen', payload: !open})
-    const setNightNumber = (nightNumber)=> dispatch({type: 'setSelectedDate', payload: nightNumber})
+    const setNightNumber = (nightNumber)=> dispatch({type: 'setNightNumber', payload: nightNumber})
 
     useEffect(()=> {
         setSelectedDate((new Date()))
