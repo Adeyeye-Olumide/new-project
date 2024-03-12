@@ -23,6 +23,8 @@ import Spinner from "../spinner-component/spinner-component";
 
 import addDays from "date-fns/esm/fp/addDays/index.js";
 
+import parseISO from "date-fns/parseISO/index";
+
 import { useSelector, useDispatch } from "react-redux";
 
 import { setMessage } from "../../store/header-reducer";

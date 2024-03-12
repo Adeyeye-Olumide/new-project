@@ -3,6 +3,8 @@ import { useEffect } from "react";
 import { setUrl, setMessage } from "./header-reducer";
 import { setSelectedDate } from "./bookings-reducer";
 
+
+
 import home from './images/outdoor.jpg'
 import gallery from './images/room.jpg'
 import resort from './images/cafe.jpg'

@@ -17,7 +17,9 @@ import { Elements } from  '@stripe/react-stripe-js'
 import { returnStripe } from './utils/stripe';
 import { ReviewsProvider } from './contexts/reviews-context';
 
-import { store } from './store/redux-store';
+import { store, persistedStore } from './store/redux-store';
+
+import { PersistGate } from 'redux-persist/lib/integration/react';
 
 
 
@@ -27,6 +29,7 @@ root.render(
   <React.StrictMode>
    
     <Provider store={store}>
+   <PersistGate persistor={persistedStore}>
     <BrowserRouter>
     {/* <UserProvider> */}
       {/* <AsyncHashLinkObserver> */}
@@ -54,6 +57,7 @@ root.render(
      
       {/* </UserProvider> */}
       </BrowserRouter>
+      </PersistGate>
     </Provider>
     
       

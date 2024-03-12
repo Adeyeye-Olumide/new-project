@@ -21,20 +21,39 @@ import { setMessage } from "../../store/header-reducer"
 import { useSelector, useDispatch } from "react-redux"
 import { setAmount, setNightNumber, setSelectedDate} from '../../store/bookings-reducer'
 
+import parseISO from "date-fns/esm/parseISO/index"
 
 
 import { setId } from '../../store/rooms-reducer'
 
 
 let datePickerEl, nightNumber, amount
+
+function isValidISODate(dateString) {
+    // Step 1: Create a regex pattern to match the ISO format
+    var isoPattern = /^d{4}-d{2}-d{2}Td{2}:d{2}:d{2}(.d{1,3})?Z$/;
+  
+    // Step 2: Check if the date string matches the pattern
+    var isValidFormat = isoPattern.test(dateString);
+  
+    // Step 3: Validate the date string using JavaScript's built-in Date object
+    var isValidDate = (new Date(dateString)).toISOString() === dateString;
+  
+    // Step 4: Return true if the date string is in ISO and UTC format, otherwise false
+    return isValidFormat && isValidDate;
+  }
 function RoomComponent(){
 
     
     const dispatch = useDispatch()
 
     const {rooms, id} = useSelector((state)=> state.rooms)
-    const { selectedDate} = useSelector((state)=> state.bookings)
-    // const {setMessage} = useContext(HeaderContext)
+    const selected = useSelector((state)=> state.bookings.selectedDate)
+
+    
+
+    const selectedDate = parseISO(selected)== 'Invalid Date'? selected : parseISO(selected)
+   
     const currentUser = useSelector((state)=> state.currentUser)
    
 
@@ -43,7 +62,7 @@ function RoomComponent(){
     const navigate = useNavigate()
 
 
-    console.log(rooms, id)
+    console.log(selectedDate)
 
 
    
