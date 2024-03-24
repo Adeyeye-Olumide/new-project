@@ -1,6 +1,6 @@
 
 import { useDispatch, UseDispatch } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useCallback } from "react";
 
 import { setReviews } from "./reviews-reducer";
 import { setMessage } from "./header-reducer";
@@ -13,9 +13,10 @@ function ReviewsFunc(){
 
     
     
-    function setReviewsInListener(data){
+    const setReviewsInListener = useCallback((data)=>{
+        
         dispatch(setReviews(data))
-    }
+    },[])
 
     
 

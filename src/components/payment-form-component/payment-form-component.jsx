@@ -3,7 +3,7 @@ import {
 } from "@stripe/react-stripe-js";
 
 
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useReducer, useState } from "react";
 
 import axios from  'axios'
 
@@ -23,6 +23,8 @@ import { returnStripe } from "../../utils/stripe";
 import { setMessage } from "../../store/header-reducer";
 import { useDispatch, useSelector} from "react-redux";
 
+import Spinner from "../spinner-component/spinner-component";
+
 function PaymentForm(){
     const dispatch = useDispatch()
     const {amount, } = useSelector((state)=> state.bookings)
@@ -32,8 +34,41 @@ function PaymentForm(){
 
 
 
-    const [clientSecret, setClientSecret] = useState(null)
-    const [stripe, setStripe] = useState(null)
+    // const [clientSecret, setClientSecret] = useState(null)
+    // const [stripe, setStripe] = useState(null)
+    // const [response, setResponse] = useState(null)
+
+    const initialState = {
+        clientSecret: null,
+        stripe: null,
+        response: null
+    }
+
+    const paymentReducer = (state , {type, payload})=> {
+
+        switch (type) {
+            case 'clientSecret':
+                
+                return {...state, clientSecret: payload};
+            case 'stripe':
+            
+                return {...state, stripe: payload};
+            
+            case 'response':
+    
+                return {...state,response: payload};
+            
+            default:
+                return state;
+        }
+    }
+
+
+    const [{stripe, response, clientSecret}, paymentReducerDispatch] = useReducer(paymentReducer, initialState)
+
+    const setStripe = (stripe) => paymentReducerDispatch({type: 'stripe', payload: stripe})
+    const setResponse = (response) => paymentReducerDispatch({type: 'response', payload: response})
+    const setClientSecret = (clientSecret) => paymentReducerDispatch({type: 'clientSecret', payload: clientSecret})
 
     const appearance = {
         theme: 'stripe',
@@ -72,6 +107,8 @@ function PaymentForm(){
             })
     
             console.log(response)
+
+            setResponse(response)
     
             
     
@@ -93,16 +130,23 @@ function PaymentForm(){
     
 
    
-
     
     
 
 
     return(
-        <Elements stripe={stripe} options={{clientSecret, appearance}}>
-            <CheckOutComponent clientSecret={clientSecret}></CheckOutComponent>
+        <>
 
-        </Elements>
+            { response?.status !=200? <Spinner></Spinner>:
+            
+            <Elements stripe={stripe} options={{clientSecret, appearance}}>
+                <CheckOutComponent clientSecret={clientSecret}></CheckOutComponent>
+
+            </Elements>
+            }
+        
+        </>
+      
         
     )
 }

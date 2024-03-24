@@ -208,7 +208,7 @@ export const reviewsListener = (setDatafunc)=> {
     {includeMetadataChanges: true},
 
     (reviewsDoc)=> {
-      setDatafunc(reviewsDoc.data()?.data)
+      setDatafunc(reviewsDoc.data()?.data || [])
       
     }
   

@@ -11,6 +11,8 @@ import resort from './images/cafe.jpg'
 import contact from './images/port.jpg'
 import { useDispatch, useSelector } from "react-redux";
 
+import { useCallback } from "react";
+
 
 const imageUrls = {
     home,
@@ -19,7 +21,7 @@ const imageUrls = {
     contact,
 }
 
-function HeaderFunc(){
+function HeaderFunc (){
 
     ///////HEADERCOMPONENT AND NAVBAR//////
 
@@ -33,7 +35,7 @@ function HeaderFunc(){
 
     
 
-    const hrefChange = ()=>{
+    const hrefChange = useCallback(()=>{
         
        
        
@@ -56,7 +58,7 @@ function HeaderFunc(){
        
 
        dispatch(setUrl(imageUrls[lastSegment? lastSegment: "home"])) 
-    }
+    }, [])
 
     
     useEffect(()=> {

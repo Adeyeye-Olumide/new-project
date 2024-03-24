@@ -54,19 +54,7 @@ function CheckOutComponent(prop) {
   
     
 
-    useEffect(()=> {
-
-
-        let timer = setTimeout(()=>{
-
-            document.querySelector('#payment-form').classList.remove("blur")
-
-        }, 5000)
-
-
-        return ()=> clearTimeout(timer)
-
-    }, [])
+    
 
 
     const paymentHandler = async(e)=> {
@@ -177,10 +165,9 @@ function CheckOutComponent(prop) {
 
     return(
        
-            <form  id='payment-form'  onSubmit={paymentHandler} className='component blur'>
+            <form  id='payment-form'  onSubmit={paymentHandler} className='component'>
 
-                {
-                    isProcessing? <Spinner></Spinner>:
+               
                     <div>
                         <div className="form-header">
                             <h4 className="title">Credit card detail</h4>
@@ -190,7 +177,7 @@ function CheckOutComponent(prop) {
             
 
                     </div>
-                }
+               
                 
             </form>
         

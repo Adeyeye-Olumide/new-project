@@ -56,8 +56,9 @@ function ReviewsComponent(){
         <div className="reviews-component-container component">
             <h2> Reviews From Our Esteemed Customers</h2>
             {
-               reviews && reviews?.map(({review, date, name})=> {
-                console.log(date.toDate().toDateString())
+               reviews.length>0 && reviews?.map(({review, date, name})=> {
+                // console.log(date.toDate().toDateString())
+                console.log(date.toDate())
                 return (
                     <div key={date} className = 'reviews-content'>
                         <h5>{name}:</h5>
